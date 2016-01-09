@@ -1,0 +1,28 @@
+{
+  "name": "comment",
+  "plural": "comments",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "content": {
+      "type": "String",
+      "required": true
+    },
+    "ProductID": {
+      "type": "Number",
+      "required": true
+    },
+    "CommentID": {
+      "type": "Number",
+      "required": false,
+      "id":true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

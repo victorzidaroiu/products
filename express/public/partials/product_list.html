@@ -1,0 +1,72 @@
+<div>
+    <h1 class="ui header center">Products</h1>
+    <br/>
+    <br/>
+    <div class="ui page grid"> 
+      <div class="one column">
+        <h4 class='center' ng-if="list.length==0">
+            <div class="ui segment">
+              <p>No products have been added yet.</p>
+            </div>
+        </h4>
+        <table class="ui four column celled table" ng-if="list.length!=0">
+          <thead>
+            <tr>
+              <th class="center aligned">Name       </th>
+              <th class="center aligned">Price (USD) </th>
+              <th class="center aligned">Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="product in list">
+              <td class="center aligned">{{product.name}}</td>
+              <td class="bold center aligned">{{product.price}}  $</td>
+              <td class="center aligned">
+                <a href="#/products/{{product.ProductID}}" class="ui labeled icon small button blue">
+                    <i class="unhide icon"></i>
+                    View
+                </a>
+                &nbsp;
+                <div ng-click="products.delete(product.ProductID)" class="ui labeled icon small button red">
+                  <i class="remove icon"></i>
+                  Delete
+                </div>                
+            </td>
+            </tr>
+          </tbody>
+        </table><br/>    
+        <div class="ui segment">
+            <div class="ui form">                
+                <h3 class="center ui dividing header">Add a product</h3>
+                <form ng-submit="products.add()">
+                  <div class="two fields">
+                     <div class="field">                     
+                       <div class="two fields">
+                         <div class="field">
+                            <label>Name</label>
+                           <input ng-model="products.name" placeholder="Name" type="text">
+                         </div>
+                         <div class="field">
+                            <label>Price</label>
+                           <input ng-model="products.price" placeholder="Price" type="text">
+                         </div>
+                       </div>
+                     </div>
+                  </div>
+                  <div class="field"> 
+                    <label>Description</label>                   
+                    <textarea ng-model="products.description" placeholder="Description"></textarea>
+                  </div>
+                  <br>
+                  <div class='center'>
+                      <button type="submit" class="ui labeled icon big button green">
+                        <i class="plus icon"></i>
+                        Add
+                      </button> 
+                    </div>
+                </form>
+            </div> 
+        </div>       
+    </div>
+</div>
+<br/><br/>     

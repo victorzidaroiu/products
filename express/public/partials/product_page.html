@@ -1,0 +1,83 @@
+<div>
+	<h1 class="ui header center">{{comments.product.name}}</h1>
+	<br/>
+	<br/>
+
+	<div class="ui page grid">
+		<div class="one column">
+			<div class="ui breadcrumb">
+				<a ng-click='comments.back()' class="section">Home</a>
+
+				<div class="divider"> /</div>
+				<div class="active section">Products</div>
+			</div>
+			<div class="ui list">
+				<div class="item">
+					<i class="right triangle icon"></i>
+
+					<div class="content">
+						<div class="header">Price</div>
+						<div class="description">
+							{{comments.product.price}}
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<i class="right triangle icon"></i>
+
+					<div class="content">
+						<div class="header">Description</div>
+						<div class="description">
+							{{comments.product.description}}
+						</div>
+					</div>
+				</div>
+			</div>
+			<h4 class='center' ng-if="comments.list.length == 0">
+				<div class="ui segment">
+					<p>No comments have been submited yet.</p>
+				</div>
+			</h4>
+			<table class="ui celled table" ng-if="comments.list.length != 0">
+				<thead>
+				<tr>
+					<th colspan="2" class="center aligned">Comments</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr ng-repeat="comment in list">
+					<td class="center aligned">{{comment.content}}</td>
+					<td class="center aligned one wide">
+						<div ng-click="comments.delete(comment.CommentID)" class="ui labeled icon button red">
+							<i class="remove icon"></i>
+							Delete
+						</div>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			<br>
+
+			<div class="ui segment">
+				<div class="ui form">
+					<h3 class="center ui dividing header">Add a comment</h3>
+
+					<form ng-submit="comments.add(comments.product.ProductID)">
+						<div class="field">
+							<textarea ng-model="comments.content" placeholder="Your comment"></textarea>
+						</div>
+						<br>
+
+						<div class='center'>
+							<button type="submit" class="ui labeled icon big button green">
+								<i class="comment icon"></i>
+								Add
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<br/><br/>     
