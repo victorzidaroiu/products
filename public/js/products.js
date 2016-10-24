@@ -1,3 +1,5 @@
+var apiEndpoint = 'http://products-api.zidaroiu.com/api';
+
 angular.module('productsApp', ['ngRoute'])
 
 	.config(['$routeProvider',
@@ -20,7 +22,7 @@ angular.module('productsApp', ['ngRoute'])
 		var _this = this;
 		$scope.products = _this;
 
-		$http.get('http://zidaroiu.com:3000/api/products').success(function (data) {
+		$http.get(apiEndpoint + '/products/list').success(function (data) {
 			$scope.list = data.map(function (product) {
 				product.price = product.price.formatMoney(2, '.', ',');
 				return product;
@@ -30,7 +32,7 @@ angular.module('productsApp', ['ngRoute'])
 		$scope.list = [];
 
 		_this.delete = function (ProductID) {
-			$http.delete('http://zidaroiu.com:3000/api/products/' + ProductID).success(function () {
+			$http.delete(apiEndpoint + '/products/delete/' + ProductID).success(function () {
 				$scope.list = $scope.list.filter(function (product) {
 					if (product.ProductID == ProductID) return false;
 					else return true;
@@ -39,7 +41,7 @@ angular.module('productsApp', ['ngRoute'])
 		};
 
 		_this.add = function () {
-			$http.put('http://zidaroiu.com:3000/api/products', {
+			$http.put(apiEndpoint + '/products/create', {
 				name: _this.name,
 				description: _this.description,
 				price: _this.price
@@ -61,9 +63,9 @@ angular.module('productsApp', ['ngRoute'])
 		$scope.comments = _this;
 		$scope.list = [];
 
-		$http.get('http://zidaroiu.com:3000/api/comments?filter[where][ProductID]=' + $routeParams.ProductID).success(function (data) {
+		$http.get(apiEndpoint + '/comments?filter[where][ProductID]=' + $routeParams.ProductID).success(function (data) {
 			$scope.list = data;
-			$http.get('http://zidaroiu.com:3000/api/products/' + $routeParams.ProductID).success(function (data) {
+			$http.get(apiEndpoint + '/products/' + $routeParams.ProductID).success(function (data) {
 				data.price = parseFloat(data.price).formatMoney(2, '.', ',')
 				_this.product = data;
 			});
@@ -80,7 +82,7 @@ angular.module('productsApp', ['ngRoute'])
 		};
 
 		_this.add = function () {
-			$http.put('http://zidaroiu.com:3000/api/comments', {
+			$http.put(apiEndpoint + '/comments', {
 				content: _this.content,
 				ProductID: _this.product.ProductID
 			}).success(function (data) {
@@ -92,7 +94,7 @@ angular.module('productsApp', ['ngRoute'])
 		};
 
 		_this.delete = function (CommentID) {
-			$http.delete('http://zidaroiu.com:3000/api/comments/' + CommentID).success(function () {
+			$http.delete(apiEndpoint + '/comments/' + CommentID).success(function () {
 				$scope.list = $scope.list.filter(function (comment) {
 					if (comment.CommentID == CommentID) return false;
 					else return true;

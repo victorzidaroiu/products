@@ -1,5 +1,14 @@
-## Products web app
+# Products app
 
-A simple web app using Express, AngularJS and Loopback.io 
+A simple web app using Express and AngularJS.
 
-http://zidaroiu.com:8083
+http://products.zidaroiu.com
+
+## Requirements
+
+Nodejs
+
+
+## Install
+
+``` npm i ```
