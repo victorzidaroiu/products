@@ -22,7 +22,7 @@ angular.module('productsApp', ['ngRoute'])
 		var _this = this;
 		$scope.products = _this;
 
-		$http.get(apiEndpoint + '/products/list').success(function (data) {
+		$http.get(apiEndpoint + '/products').success(function (data) {
 			$scope.list = data.map(function (product) {
 				product.price = product.price.formatMoney(2, '.', ',');
 				return product;
@@ -32,7 +32,7 @@ angular.module('productsApp', ['ngRoute'])
 		$scope.list = [];
 
 		_this.delete = function (ProductID) {
-			$http.delete(apiEndpoint + '/products/delete/' + ProductID).success(function () {
+			$http.delete(apiEndpoint + '/products/' + ProductID).success(function () {
 				$scope.list = $scope.list.filter(function (product) {
 					if (product.ProductID == ProductID) return false;
 					else return true;
@@ -41,7 +41,7 @@ angular.module('productsApp', ['ngRoute'])
 		};
 
 		_this.add = function () {
-			$http.put(apiEndpoint + '/products/create', {
+			$http.put(apiEndpoint + '/products', {
 				name: _this.name,
 				description: _this.description,
 				price: _this.price
