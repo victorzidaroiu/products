@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/victorzidaroiu/tv.git"
+    "url": "git+https://github.com/victorzidaroiu/products.git"
   },
   "dependencies": {
     "babel-core": "^6.18.2",
