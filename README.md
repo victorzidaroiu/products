@@ -1,6 +1,6 @@
 # Products app
 
-This is a CRUD front end for generic products. It uses a API to perform operations.
+This is a simple CRUD front end app for managing generic products. It talks to an API app called products-api.
 
 http://products.zidaroiu.com
 
@@ -10,4 +10,5 @@ Nodejs
 
 ## Install
 
-``` npm i ```
+* ``` npm i ```
+* ``` cp .env.dev .env ```

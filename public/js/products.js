@@ -1,5 +1,3 @@
-var apiEndpoint = 'http://products-api.zidaroiu.com/api';
-
 angular.module('productsApp', ['ngRoute'])
 
 	.config(['$routeProvider',
